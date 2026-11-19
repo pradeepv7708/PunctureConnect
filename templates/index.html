@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero section" id="home">
+  <div class="hero-grid"></div><div class="orb orb-one"></div><div class="orb orb-two"></div>
+  <div class="hero-copy reveal">
+    <div class="eyebrow"><span class="pulse-dot"></span> SMART ROADSIDE ASSISTANCE <span class="eyebrow-line"></span></div>
+    <h1>Flat tyre?<br><span class="outline-text">Don't stop.</span><br><span class="green">Get moving.</span></h1>
+    <p class="hero-sub">A puncture shouldn't ruin your ride. Find trusted repair shops around you, compare prices, and get help without the guesswork.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary magnetic" href="#find">Find help near me <span>↗</span></a>
+      <a class="text-link" href="#how"><span class="play-icon">▶</span> See how it works</a>
+    </div>
+    <div class="hero-proof"><div class="avatar-stack"><i>R</i><i>K</i><i>M</i><i>+</i></div><div><strong>Local help, closer</strong><small>Discover repair options around you</small></div></div>
+  </div>
+  <div class="hero-visual reveal">
+    <div class="visual-ring ring-a"></div><div class="visual-ring ring-b"></div>
+    <div class="floating-tag tag-top"><span class="tag-icon">⌖</span><span><b>Nearby shops</b><small>Discover local help</small></span></div>
+    <div class="bike-art">
+      <div class="speed-lines"></div>
+      <svg viewBox="0 0 620 390" role="img" aria-label="Stylized motorcycle illustration">
+        <defs><linearGradient id="bikeG" x1="0" x2="1"><stop stop-color="#a8ff65"/><stop offset="1" stop-color="#36c76a"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+        <ellipse cx="310" cy="337" rx="230" ry="17" fill="#8cff4a" opacity=".12"/>
+        <g fill="none" stroke="#d8e7db" stroke-width="12"><circle cx="165" cy="286" r="67"/><circle cx="470" cy="286" r="67"/></g>
+        <g fill="none" stroke="#7f9185" stroke-width="3"><circle cx="165" cy="286" r="49"/><circle cx="470" cy="286" r="49"/><path d="M165 219V353M98 286H232M470 219V353M403 286H537"/></g>
+        <path d="M165 286L255 184L340 286H165L275 286L355 183L470 286" fill="none" stroke="url(#bikeG)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+        <path d="M255 184L302 153L374 159L416 185L355 183" fill="#19291d" stroke="#a8ff65" stroke-width="7" stroke-linejoin="round"/>
+        <path d="M286 151L321 112L393 117L426 153L374 159Z" fill="#293b2e" stroke="#a8ff65" stroke-width="6"/>
+        <path d="M315 111L348 90L397 94L416 116" fill="none" stroke="#d7e4d8" stroke-width="8" stroke-linecap="round"/>
+        <path d="M255 184L235 151L199 146" fill="none" stroke="#d7e4d8" stroke-width="8" stroke-linecap="round"/>
+        <path d="M355 183L386 214L421 215" fill="none" stroke="#d7e4d8" stroke-width="8" stroke-linecap="round"/>
+        <path d="M276 152L300 132L342 134" fill="none" stroke="#a8ff65" stroke-width="10" stroke-linecap="round"/>
+        <path d="M415 183L449 174L468 185" fill="none" stroke="#a8ff65" stroke-width="7" stroke-linecap="round"/>
+        <path d="M108 198L78 190M122 218L83 220M111 240L70 249" stroke="#a8ff65" stroke-width="4" opacity=".7"/>
+      </svg>
+    </div>
+    <div class="floating-tag tag-bottom"><span class="status-pulse"></span><span><b>Help is within reach</b><small>Search by your location</small></span></div>
+    <div class="tiny-cross cross-one">✳</div><div class="tiny-cross cross-two">✳</div>
+  </div>
+  <div class="hero-bottom"><span>01 / FIND YOUR FIX</span><span>SCROLL TO EXPLORE ↓</span><span>MADE FOR EVERY RIDE</span></div>
+</section>
+
+<section class="ticker"><div class="ticker-track"><span>FIND LOCAL HELP</span><b>✳</b><span>COMPARE PRICES</span><b>✳</b><span>GET BACK ON THE ROAD</span><b>✳</b><span>FIND LOCAL HELP</span><b>✳</b><span>COMPARE PRICES</span><b>✳</b><span>GET BACK ON THE ROAD</span><b>✳</b></div></section>
+
+<section class="section find-section" id="find">
+  <div class="section-heading reveal"><div><div class="eyebrow"><span class="pulse-dot"></span> YOUR NEXT STOP</div><h2>Help is closer<br>than you <span class="green">think.</span></h2></div><p>Find puncture repair shops around your location. Compare distance, price and availability before you make a choice.</p></div>
+  <div class="search-toolbar reveal">
+    <div class="location-input"><span>⌖</span><div><small>YOUR LOCATION</small><input id="locationText" value="Erode, Tamil Nadu" aria-label="Your location"></div></div>
+    <button class="btn btn-primary" id="locateBtn">Use my location <span>⌖</span></button>
+    <div class="filter-control"><label for="availabilityFilter">Availability</label><select id="availabilityFilter"><option value="all">All shops</option><option value="yes">Available now</option></select></div>
+    <div class="filter-control"><label for="sortFilter">Sort by</label><select id="sortFilter"><option value="rating">Top rated</option><option value="price">Lowest price</option><option value="distance">Nearest</option></select></div>
+  </div>
+  <div class="service-layout reveal">
+    <div class="shop-list">
+      <div class="list-top"><span><b id="shopCount">Nearby repair shops</b><small>Sample locations around Erode</small></span><span class="live-label"><i></i> LIVE LIST</span></div>
+      <div id="shopCards" class="shop-cards"><div class="loading-state"><span class="loader"></span>Finding nearby shops...</div></div>
+    </div>
+    <div class="map-panel"><div class="map-caption"><span><i class="pulse-dot"></i> MAP VIEW</span><span>ERODE, TN</span></div><div id="map"></div><div class="map-legend"><span><i class="legend-dot"></i> Repair shop</span><span>Map data © OpenStreetMap</span></div></div>
+  </div>
+</section>
+
+<section class="section how-section" id="how">
+  <div class="section-heading reveal"><div><div class="eyebrow"><span class="pulse-dot"></span> SIMPLE AS 1–2–3</div><h2>Back on the road.<br><span class="green">No drama.</span></h2></div><p>From unexpected puncture to finding a repair shop, we make the next step simple.</p></div>
+  <div class="steps-grid">
+    <article class="step-card reveal"><span class="step-number">01</span><div class="step-icon">⌖</div><h3>Share your location</h3><p>Use your current location or enter an area to discover nearby puncture repair shops.</p><span class="step-arrow">↗</span></article>
+    <article class="step-card reveal"><span class="step-number">02</span><div class="step-icon">⌕</div><h3>Compare your options</h3><p>Check shop distance, estimated price, ratings and availability in one place.</p><span class="step-arrow">↗</span></article>
+    <article class="step-card reveal"><span class="step-number">03</span><div class="step-icon">✓</div><h3>Send a booking request</h3><p>Choose a shop, share your details and send a request to get your repair started.</p><span class="step-arrow">↗</span></article>
+  </div>
+</section>
+
+<section class="cta-section section reveal"><div class="cta-glow"></div><div class="eyebrow"><span class="pulse-dot"></span> YOUR RIDE CAN KEEP GOING</div><h2>Don't let a flat tyre<br><span class="green">call the shots.</span></h2><p>Find local help and get back to what matters — the ride.</p><a class="btn btn-primary" href="#find">Find a repair shop <span>↗</span></a><div class="cta-decoration">P<span>+</span></div></section>
+{% endblock %}
+{% block scripts %}
+<script>
+  window.PUNCTURE_CONFIG = { loggedIn: {{ 'true' if current_user else 'false' }}, userName: {{ (current_user or '')|tojson }} };
+</script>
+{% endblock %}

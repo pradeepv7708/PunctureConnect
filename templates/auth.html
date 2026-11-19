@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Create account' if mode == 'register' else 'Sign in' }} · PunctureConnect{% endblock %}
+{% block content %}
+<section class="auth-section">
+  <div class="auth-visual"><div class="eyebrow"><span class="pulse-dot"></span> THE ROAD AWAITS</div><h1>Every ride<br>deserves a<br><span class="green">smooth start.</span></h1><p>Get connected to nearby puncture repair support, whenever the road throws a surprise.</p><div class="auth-orbit">P<span>+</span></div></div>
+  <div class="auth-card">
+    <div class="eyebrow"><span class="pulse-dot"></span> {{ 'JOIN THE NETWORK' if mode == 'register' else 'WELCOME BACK' }}</div>
+    <h2>{{ 'Create your account' if mode == 'register' else 'Good to see you.' }}</h2>
+    <p>{{ 'A few details and you are ready to ride.' if mode == 'register' else 'Sign in to continue to PunctureConnect.' }}</p>
+    <form method="POST">
+      {% if mode == 'register' %}
+      <label>Full name<input name="name" placeholder="Your name" required></label>
+      <label>Phone number<input name="phone" type="tel" placeholder="Your mobile number" required></label>
+      {% endif %}
+      <label>Email address<input name="email" type="email" placeholder="you@example.com" required></label>
+      <label>Password<input name="password" type="password" placeholder="At least 6 characters" minlength="6" required></label>
+      {% if mode == 'register' %}<label>Account type<select name="role"><option value="customer">Customer</option><option value="provider">Service provider</option></select></label>{% endif %}
+      <button class="btn btn-primary full-btn" type="submit">{{ 'Create account' if mode == 'register' else 'Sign in' }} <span>↗</span></button>
+    </form>
+    <div class="auth-switch">{% if mode == 'register' %}Already have an account? <a href="{{ url_for('login') }}">Sign in</a>{% else %}New to PunctureConnect? <a href="{{ url_for('register') }}">Create an account</a>{% endif %}</div>
+    <small class="secure-note">⌑ Your account details are protected with password hashing.</small>
+  </div>
+</section>
+{% endblock %}

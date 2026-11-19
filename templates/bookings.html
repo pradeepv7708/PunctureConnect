@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}My bookings · PunctureConnect{% endblock %}
+{% block content %}
+<section class="section bookings-section">
+  <div class="eyebrow"><span class="pulse-dot"></span> YOUR ACTIVITY</div>
+  <h1 class="page-title">My <span class="green">bookings.</span></h1>
+  <p class="page-subtitle">Keep track of the service requests you have sent.</p>
+  {% if bookings %}
+  <div class="booking-list">{% for b in bookings %}
+    <article class="booking-row"><div><small>REQUEST #{{ b.id }}</small><h3>{{ b.shop_name }}</h3><p>{{ b.shop_address }} · {{ b.vehicle_type }}</p><span>{{ b.created_at }}</span></div><div class="booking-status {{ b.status|lower }}">{{ b.status }}</div></article>
+  {% endfor %}</div>
+  {% else %}<div class="empty-state"><div>⌁</div><h2>No bookings yet</h2><p>When you send a repair request, it will appear here.</p><a class="btn btn-primary" href="{{ url_for('index') }}#find">Find a shop <span>↗</span></a></div>{% endif %}
+</section>
+{% endblock %}
